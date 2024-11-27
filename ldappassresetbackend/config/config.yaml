@@ -1,0 +1,62 @@
+server:
+  port: 8000
+
+logger:
+  path: "./log"
+  level: "all"
+  stdout: true
+
+ldap:
+  host: ''
+  port: ''
+  disableTLS: true
+  baseDn: ''
+  adminUser: ''
+  adminPassword: ''
+
+sms:
+  accessKeyID: ""
+  accessKeySecret: ""
+  signName: ""
+  templateCode: ""
+
+smtp:
+  address: ''
+  port: ''
+  disableTLS: true
+  username: ''
+  password: ''
+  sender: ''
+  subject: ''
+  emailTemplate: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Verification Code Email</title>
+      <style>
+        body { font-family: Arial, sans-serif; }
+        .email-container { width: 600px; margin: 0 auto; }
+        .header { text-align: center; }
+        .code { font-size: 24px; margin: 20px 0; text-align: center; }
+        .footer { font-size: 12px; text-align: center; margin-top: 50px; }
+        .footer a { color: #000; text-decoration: none; }
+      </style>
+    </head>
+    <body>
+    <div class="email-container">
+      <div class="header">
+        <h3>验证您的身份</h3>
+      </div>
+      <p><strong>{{.User}}</strong>, 您的验证码如下：</p>
+      <p>请使用此验证码完成您的操作。验证码有效期为 5 分钟。</p>
+      <div class="code">{{.Code}}</div>
+      <p>祝您工作愉快, (⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)⁠✧⁠*⁠。</p>
+      <hr>
+      <div class="footer">
+        <p>此邮件由 发送, 如有任何疑问, 请与IT部门取得联系, 谢谢~</p>
+      </div>
+    </div>
+    </body>
+    </html>
